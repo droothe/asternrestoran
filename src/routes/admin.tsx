@@ -37,7 +37,7 @@ function Admin() {
       <div className="mx-auto max-w-5xl">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary"><ArrowLeft className="h-4 w-4" />Siteye dön</Link>
         <h1 className="mt-4 text-4xl font-semibold md:text-5xl">Yönetim <span className="text-gradient-gold italic">Paneli</span></h1>
-        <p className="mt-2 text-xs text-muted-foreground">Demo panel: veriler yalnızca bu tarayıcıda saklanır.</p>
+        <p className="mt-2 text-xs text-muted-foreground">Demo panel: örnek rezervasyonlar dahildir; veriler yalnızca bu tarayıcıda saklanır.</p>
         <div className="mt-8 flex gap-2">
           {([["res", `Rezervasyonlar (${res.length})`], ["menu", "Menü"]] as const).map(([k, l]) => (
             <button key={k} onClick={() => setTab(k)} className={`rounded-full border px-5 py-2 text-sm ${tab === k ? "border-primary bg-primary text-primary-foreground" : "border-border text-muted-foreground"}`}>{l}</button>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
-import { Car, Sprout, ChefHat, MapPin, Phone, MessageCircle, Clock, Instagram, Newspaper, Star, CalendarCheck, UtensilsCrossed, Check } from "lucide-react";
+import { Car, Sprout, ChefHat, MapPin, Phone, MessageCircle, Clock, Instagram, Newspaper, Star, CalendarCheck, UtensilsCrossed, Check, Settings2 } from "lucide-react";
 import hero from "@/assets/hero-astarte.jpg";
 import { CATEGORIES, DEFAULT_MENU, getMenu, addReservation, type Category, type Dish, PHONE, WHATSAPP, ADDRESS, MAPS } from "@/lib/store";
 
@@ -46,10 +46,16 @@ function Nav() {
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/70 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <a href="#" className="min-w-0 font-display text-2xl font-semibold tracking-[0.25em] text-gradient-gold">ASTARTE</a>
-        <nav className="hidden gap-8 text-sm md:flex">
+        <nav className="hidden gap-8 text-sm lg:flex">
           {links.map(([h, l]) => <a key={h} href={h} className="text-muted-foreground transition-colors hover:text-primary">{l}</a>)}
         </nav>
-        <a href="#rezervasyon" className="hidden rounded-sm bg-gradient-gold px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground md:inline-flex">Rezervasyon</a>
+        <div className="flex items-center gap-2">
+          <a href="#rezervasyon" className="hidden rounded-sm bg-gradient-gold px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary-foreground md:inline-flex">Rezervasyon</a>
+          <Link to="/admin" className="inline-flex items-center gap-2 rounded-sm border border-primary/50 px-3 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-primary/10 sm:px-4">
+            <Settings2 className="h-4 w-4 text-primary" />
+            Yönetim
+          </Link>
+        </div>
       </div>
     </header>
   );

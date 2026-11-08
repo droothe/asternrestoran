@@ -29,7 +29,28 @@ const write = (key: string, v: unknown) => localStorage.setItem(key, JSON.string
 
 export const getMenu = () => read<Dish[]>(MENU_KEY, DEFAULT_MENU);
 export const saveMenu = (m: Dish[]) => write(MENU_KEY, m);
-export const getReservations = () => read<Reservation[]>(RES_KEY, []);
+const createDemoReservations = (): Reservation[] => {
+  const dateAfter = (days: number) => {
+    const date = new Date();
+    date.setDate(date.getDate() + days);
+    return [date.getFullYear(), String(date.getMonth() + 1).padStart(2, "0"), String(date.getDate()).padStart(2, "0")].join("-");
+  };
+  const createdAt = new Date().toISOString();
+  return [
+    { id: "demo-1", name: "Elif Demir", phone: "+90 500 000 00 01", date: dateAfter(1), time: "12:30", guests: 2, notes: "DEMO · Pencere kenarı tercihi", createdAt, status: "Onaylandı" },
+    { id: "demo-2", name: "Mehmet Arslan", phone: "+90 500 000 00 02", date: dateAfter(1), time: "19:00", guests: 4, notes: "DEMO · Aile yemeği", createdAt, status: "Bekliyor" },
+    { id: "demo-3", name: "Zeynep Kaya", phone: "+90 500 000 00 03", date: dateAfter(2), time: "20:00", guests: 3, notes: "DEMO · Doğum günü kutlaması", createdAt, status: "Onaylandı" },
+    { id: "demo-4", name: "Ahmet Yıldız", phone: "+90 500 000 00 04", date: dateAfter(3), time: "13:00", guests: 6, notes: "DEMO · Teras masası tercihi", createdAt, status: "Bekliyor" },
+  ];
+};
+export const getReservations = () => {
+  const reservations = read<Reservation[] | null>(RES_KEY, null);
+  if (reservations !== null) return reservations;
+
+  const demoReservations = createDemoReservations();
+  if (typeof window !== "undefined") saveReservations(demoReservations);
+  return demoReservations;
+};
 export const saveReservations = (r: Reservation[]) => write(RES_KEY, r);
 export const addReservation = (r: Omit<Reservation, "id" | "createdAt" | "status">) => {
   const all = getReservations();
