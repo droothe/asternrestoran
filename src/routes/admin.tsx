@@ -6,9 +6,9 @@ import { getMenu, saveMenu, getReservations, saveReservations, type Dish, type R
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Yönetim Paneli — astarterestoran" },
-      { name: "description", content: "Astarte Restaurant rezervasyon ve menü yönetimi." },
-      { property: "og:title", content: "Yönetim Paneli — astarterestoran" },
+      { title: "Yönetim Paneli — Astern Restoran" },
+      { name: "description", content: "Astern Restoran demo rezervasyon ve menü yönetimi." },
+      { property: "og:title", content: "Astern Restoran — Yöresel Şef Mutfağı" },
       { property: "og:description", content: "Rezervasyon talepleri ve menü fiyatları." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

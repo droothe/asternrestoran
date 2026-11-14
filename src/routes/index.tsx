@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState, type FormEvent } from "react";
-import { Car, Sprout, ChefHat, MapPin, Phone, MessageCircle, Clock, Instagram, Newspaper, Star, CalendarCheck, UtensilsCrossed, Check, Settings2 } from "lucide-react";
-import hero from "@/assets/hero-astarte.jpg";
-import { CATEGORIES, DEFAULT_MENU, getMenu, addReservation, type Category, type Dish, PHONE, WHATSAPP, ADDRESS, MAPS } from "@/lib/store";
+import { Car, Sprout, ChefHat, MapPin, Phone, Mail, MessageCircle, Clock, Newspaper, Star, CalendarCheck, UtensilsCrossed, Check, Settings2 } from "lucide-react";
+import hero from "@/assets/hero-astern.jpg";
+import { CATEGORIES, DEFAULT_MENU, getMenu, addReservation, type Category, type Dish, PHONE, EMAIL, WHATSAPP, ADDRESS, MAPS } from "@/lib/store";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "astarterestoran — Chef Ali Keskin | Urfa Şef Restoranı" },
-      { name: "description", content: "Tarladan sofraya ilk yöresel şef restoranı. 400 çeşit Urfa yemeği, yöresel kahvaltı ve online masa rezervasyonu." },
-      { property: "og:title", content: "astarterestoran — Chef Ali Keskin" },
-      { property: "og:description", content: "400 çeşit Urfa yemeği ve yöresel kahvaltı. Masanızı hemen ayırtın." },
+      { title: "Astern Restoran — Yöresel Şef Mutfağı" },
+      { name: "description", content: "Astern Restoran — Yöresel Şef Mutfağı" },
+      { property: "og:title", content: "Astern Restoran — Yöresel Şef Mutfağı" },
+      { property: "og:description", content: "Astern Restoran — Yöresel Şef Mutfağı" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -33,7 +33,7 @@ function Index() {
       <Press />
       <Contact />
       <footer className="border-t border-border py-8 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Astarte Restaurant · Chef Ali Keskin · <Link to="/admin" className="hover:text-primary">Yönetim</Link>
+        © {new Date().getFullYear()} Astern Restoran · Chef Kerem Arslan · <Link to="/admin" className="hover:text-primary">Yönetim</Link>
       </footer>
       <MobileBar />
     </div>
@@ -45,7 +45,7 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border bg-background/70 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-        <a href="#" className="min-w-0 font-display text-2xl font-semibold tracking-[0.25em] text-gradient-gold">ASTARTE</a>
+        <a href="#" className="min-w-0 font-display text-2xl font-semibold tracking-[0.25em] text-gradient-gold">ASTERN</a>
         <nav className="hidden gap-8 text-sm lg:flex">
           {links.map(([h, l]) => <a key={h} href={h} className="text-muted-foreground transition-colors hover:text-primary">{l}</a>)}
         </nav>
@@ -64,15 +64,15 @@ function Nav() {
 function Hero() {
   return (
     <section className="relative flex min-h-[100svh] items-end">
-      <img src={hero} alt="Astarte Restaurant taş kemerli salon ve Chef Ali Keskin" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
+      <img src={hero} alt="Taş kemerli, bakır detaylı fine-dining restoran salonu" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-hero" />
       <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 pt-32 md:pb-28">
-        <p className={`${eyebrow} fade-up`}>Chef Ali Keskin · Şanlıurfa</p>
+        <p className={`${eyebrow} fade-up`}>CHEF KEREM ARSLAN · ANADOLU MUTFAĞI</p>
         <h1 className="fade-up mt-5 max-w-4xl text-5xl font-semibold leading-[1.02] text-foreground sm:text-6xl md:text-8xl" style={{ animationDelay: ".1s" }}>
-          Tarladan Sofraya <span className="italic text-gradient-gold">İlk Yöresel</span> Şef Restoranı
+          Anadolu'nun <span className="italic text-gradient-gold">Köklü</span> Lezzetlerine Modern Bir Yorum
         </h1>
         <p className="fade-up mt-6 max-w-xl text-base text-muted-foreground md:text-lg" style={{ animationDelay: ".2s" }}>
-          Taş kemerler, bakır kaplar ve 400 çeşit Urfa yemeği. Asırlık tarifler, bir şefin elinde yeniden doğuyor.
+          Taş kemerler, bakır kaplar ve asırlık Anadolu tarifleri, modern dokunuşlarla yeniden doğuyor.
         </p>
         <div className="fade-up mt-9 flex flex-col gap-3 sm:flex-row" style={{ animationDelay: ".3s" }}>
           <a href="#menu" className={btnGhost}><UtensilsCrossed className="h-4 w-4" />Menüyü İncele</a>
@@ -86,8 +86,8 @@ function Hero() {
 function About() {
   const feats = [
     { icon: Car, t: "Otopark Mevcut", d: "Misafirlerimize özel ücretsiz otopark." },
-    { icon: ChefHat, t: "İlk Yöresel Şef Restoranı", d: "Urfa mutfağını şef dokunuşuyla sunan ilk adres." },
-    { icon: Sprout, t: "Günlük & Taze Malzemeler", d: "Her sabah yerel üreticiden, tarladan sofraya." },
+    { icon: ChefHat, t: "Anadolu'dan İlham", d: "Köklü tarifleri çağdaş fine-dining sunumlarıyla buluşturuyoruz." },
+    { icon: Sprout, t: "Mevsimsel Malzemeler", d: "Menüyü mevsimin ürünleri ve yerel üretici seçkileri belirliyor." },
   ];
   return (
     <section id="hikaye" className="mx-auto max-w-7xl scroll-mt-16 px-5 py-24 md:py-32">
@@ -97,9 +97,9 @@ function About() {
           <h2 className="mt-4 text-4xl font-semibold md:text-6xl">Bir ustanın <span className="italic text-primary">sofrası</span></h2>
         </div>
         <div className="space-y-5 text-muted-foreground">
-          <p>Çocukluğumun Urfa mutfağında, annemin bakır tencerelerinden yükselen kokularla büyüdüm. Astarte, o kokuları unutulmaya bırakmamak için kuruldu.</p>
-          <p>Her tabak, yöremizin topraklarından gelen taze malzemeyle ve asırlık tariflere duyduğumuz saygıyla hazırlanıyor.</p>
-          <p className="font-display text-3xl italic text-gradient-gold">— Chef Ali Keskin</p>
+          <p>Astern, Anadolu'nun köklü mutfak mirasını çağdaş bir fine-dining deneyimine taşımak için kurgulanmış bir demo markadır.</p>
+          <p>Her tabak; mevsimsel ürünleri, asırlık tariflerden ilham alan teknikler ve modern sunumlarla bir araya getirir.</p>
+          <p className="font-display text-3xl italic text-gradient-gold">— Chef Kerem Arslan</p>
         </div>
       </div>
       <div className="mt-16 grid gap-4 sm:grid-cols-3">
@@ -117,7 +117,7 @@ function About() {
 
 function Menu() {
   const [menu, setMenu] = useState<Dish[]>(DEFAULT_MENU);
-  const [cat, setCat] = useState<Category>("Yöresel Kahvaltı");
+  const [cat, setCat] = useState<Category>("Kahvaltı");
   useEffect(() => setMenu(getMenu()), []);
   const items = menu.filter((d) => d.category === cat);
   return (
@@ -125,8 +125,8 @@ function Menu() {
       <div className="mx-auto max-w-7xl px-5">
         <div className="text-center">
           <p className={eyebrow}>Öne Çıkan Lezzetler</p>
-          <h2 className="mt-4 text-4xl font-semibold md:text-6xl"><span className="text-gradient-gold">400</span> Çeşit Urfa Yemeği</h2>
-          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">Yöresel kahvaltıdan şefin sinisine, her gün yeniden.</p>
+          <h2 className="mt-4 text-4xl font-semibold md:text-6xl">Mevsimlik <span className="text-gradient-gold">Anadolu</span> Menüsü</h2>
+          <p className="mx-auto mt-4 max-w-lg text-muted-foreground">Asırlık tarifler, mevsimsel ürünler ve modern sunumlar.</p>
         </div>
         <div className="-mx-5 mt-10 flex gap-2 overflow-x-auto px-5 pb-2 md:justify-center">
           {CATEGORIES.map((c) => (
@@ -196,9 +196,9 @@ function Reservation() {
 
 function Press() {
   const cards = [
-    { icon: Star, t: "Ömür Akkor Ziyareti", d: "Ünlü gastronomi yazarı Ömür Akkor, Astarte sofrasında Urfa mutfağını tattı." },
-    { icon: Newspaper, t: "Basında Astarte", d: "“Urfa mutfağının şef dokunuşuyla buluştuğu ilk adres.”" },
-    { icon: Instagram, t: "@astarterestaurant", d: "Mutfaktan günlük kareler ve yeni lezzetler için bizi takip edin.", href: "https://instagram.com/astarterestaurant" },
+    { icon: Star, t: "Demo Basın Kiti", d: "Astern Restoran'ın kurgusal konseptini ve menü yaklaşımını tanıtan demo içerik." },
+    { icon: Newspaper, t: "Konsept Notu", d: "Anadolu mutfak mirasına çağdaş bir yorum getiren fine-dining demo markası." },
+    { icon: UtensilsCrossed, t: "Mutfaktan Seçkiler", d: "Mevsimsel malzemeler ve şefin tadım menüsünden örnekler." },
   ];
   return (
     <section id="basin" className="scroll-mt-16 border-y border-border bg-card/40 py-24 md:py-32">
@@ -206,11 +206,9 @@ function Press() {
         <p className={`${eyebrow} text-center`}>Basında Biz</p>
         <h2 className="mt-4 text-center text-4xl font-semibold md:text-6xl">Değerli Konuklarımız</h2>
         <div className="mt-14 grid gap-5 md:grid-cols-3">
-          {cards.map(({ icon: I, t, d, href }) => {
+          {cards.map(({ icon: I, t, d }) => {
             const body = (<><I className="h-6 w-6 text-primary" /><h3 className="mt-6 text-2xl font-semibold">{t}</h3><p className="mt-3 text-sm text-muted-foreground">{d}</p></>);
-            return href
-              ? <a key={t} href={href} target="_blank" rel="noreferrer" className="rounded-sm border border-border bg-background p-8 transition-colors hover:border-primary/60">{body}</a>
-              : <div key={t} className="rounded-sm border border-border bg-background p-8">{body}</div>;
+            return <div key={t} className="rounded-sm border border-border bg-background p-8">{body}</div>;
           })}
         </div>
       </div>
@@ -228,6 +226,7 @@ function Contact() {
           <div className="mt-10 space-y-5 text-muted-foreground">
             <p className="flex gap-3"><MapPin className="h-5 w-5 shrink-0 text-primary" />{ADDRESS}</p>
             <p className="flex gap-3"><Phone className="h-5 w-5 shrink-0 text-primary" /><a href={`tel:${PHONE.replace(/\s/g, "")}`} className="hover:text-primary">{PHONE}</a></p>
+            <p className="flex gap-3"><Mail className="h-5 w-5 shrink-0 text-primary" /><a href={`mailto:${EMAIL}`} className="hover:text-primary">{EMAIL}</a></p>
             <p className="flex gap-3"><Clock className="h-5 w-5 shrink-0 text-primary" />Her gün 08:00 – 23:00</p>
           </div>
         </div>

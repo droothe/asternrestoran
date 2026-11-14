@@ -2,24 +2,24 @@ import kahvalti from "@/assets/dish-kahvalti.jpg";
 import sicak from "@/assets/dish-sicak.jpg";
 import tatli from "@/assets/dish-tatli.jpg";
 
-export type Category = "Yöresel Kahvaltı" | "Şefin Sinisi" | "Sıcak Yemekler" | "Yöresel Tatlılar";
-export const CATEGORIES: Category[] = ["Yöresel Kahvaltı", "Şefin Sinisi", "Sıcak Yemekler", "Yöresel Tatlılar"];
+export type Category = "Kahvaltı" | "Şefin Tadım Menüsü" | "Ana Yemekler" | "Tatlılar";
+export const CATEGORIES: Category[] = ["Kahvaltı", "Şefin Tadım Menüsü", "Ana Yemekler", "Tatlılar"];
 
 export interface Dish { id: string; name: string; desc: string; price: number; category: Category; image: string }
 export interface Reservation { id: string; name: string; phone: string; date: string; time: string; guests: number; notes: string; createdAt: string; status: "Bekliyor" | "Onaylandı" | "İptal" }
 
 export const DEFAULT_MENU: Dish[] = [
-  { id: "1", name: "Urfa Serpme Kahvaltı", desc: "Bakır sahanlarda 20+ çeşit yöresel lezzet, isot ve köy tereyağı.", price: 950, category: "Yöresel Kahvaltı", image: kahvalti },
-  { id: "2", name: "Bostana", desc: "Taze domates, nar ekşisi ve isotla hazırlanan Urfa salatası.", price: 220, category: "Yöresel Kahvaltı", image: kahvalti },
-  { id: "3", name: "Şefin Sinisi", desc: "Chef Ali Keskin'in günün seçkilerinden oluşan büyük sini.", price: 1850, category: "Şefin Sinisi", image: sicak },
-  { id: "4", name: "Patlıcan Kebabı", desc: "Közde patlıcan ve zırh kıyması, bakır tavada közlenmiş biber.", price: 680, category: "Sıcak Yemekler", image: sicak },
-  { id: "5", name: "Ciğer Tava", desc: "Kuyruk yağında, isot ve soğan eşliğinde.", price: 590, category: "Sıcak Yemekler", image: sicak },
-  { id: "6", name: "Su Kabağı Tatlısı", desc: "Tahin ve cevizle, gümüş tabakta.", price: 260, category: "Yöresel Tatlılar", image: tatli },
-  { id: "7", name: "Şıllık", desc: "İnce yufka, ceviz ve şerbetle yöresel Urfa tatlısı.", price: 280, category: "Yöresel Tatlılar", image: tatli },
+  { id: "1", name: "Anadolu Kahvaltı Seçkisi", desc: "Mevsim peynirleri, fırın ekmeği, ev yapımı reçel ve zeytin.", price: 950, category: "Kahvaltı", image: kahvalti },
+  { id: "2", name: "Köz Patlıcan & Yoğurt", desc: "Közlenmiş patlıcan, süzme yoğurt ve soğuk sıkım zeytinyağı.", price: 320, category: "Kahvaltı", image: kahvalti },
+  { id: "3", name: "Şefin Tadım Menüsü", desc: "Chef Kerem Arslan'ın mevsimsel ürünlerle hazırladığı seçki.", price: 1850, category: "Şefin Tadım Menüsü", image: sicak },
+  { id: "4", name: "Odun Ateşinde Dana", desc: "Yavaş pişmiş dana, köz sebzeler ve otlu tereyağı.", price: 980, category: "Ana Yemekler", image: sicak },
+  { id: "5", name: "Mevsim Sebzeleri", desc: "Taş fırında pişirilmiş mevsim sebzeleri ve tahin sosu.", price: 590, category: "Ana Yemekler", image: sicak },
+  { id: "6", name: "Bal & Ceviz Tatlısı", desc: "Bal şerbeti, ceviz ve kaymakla tamamlanan hafif tatlı.", price: 360, category: "Tatlılar", image: tatli },
+  { id: "7", name: "İrmik Helvası", desc: "Tereyağında kavrulmuş irmik, süt köpüğü ve Antep fıstığı.", price: 320, category: "Tatlılar", image: tatli },
 ];
 
-const MENU_KEY = "astarte_menu";
-const RES_KEY = "astarte_reservations";
+const MENU_KEY = "astern_demo_menu";
+const RES_KEY = "astern_demo_reservations";
 
 const read = <T,>(key: string, fallback: T): T => {
   if (typeof window === "undefined") return fallback;
@@ -37,10 +37,10 @@ const createDemoReservations = (): Reservation[] => {
   };
   const createdAt = new Date().toISOString();
   return [
-    { id: "demo-1", name: "Elif Demir", phone: "+90 500 000 00 01", date: dateAfter(1), time: "12:30", guests: 2, notes: "DEMO · Pencere kenarı tercihi", createdAt, status: "Onaylandı" },
-    { id: "demo-2", name: "Mehmet Arslan", phone: "+90 500 000 00 02", date: dateAfter(1), time: "19:00", guests: 4, notes: "DEMO · Aile yemeği", createdAt, status: "Bekliyor" },
-    { id: "demo-3", name: "Zeynep Kaya", phone: "+90 500 000 00 03", date: dateAfter(2), time: "20:00", guests: 3, notes: "DEMO · Doğum günü kutlaması", createdAt, status: "Onaylandı" },
-    { id: "demo-4", name: "Ahmet Yıldız", phone: "+90 500 000 00 04", date: dateAfter(3), time: "13:00", guests: 6, notes: "DEMO · Teras masası tercihi", createdAt, status: "Bekliyor" },
+    { id: "demo-1", name: "Demo Misafir 01", phone: "+90 555 000 00 01", date: dateAfter(1), time: "12:30", guests: 2, notes: "DEMO · Pencere kenarı tercihi", createdAt, status: "Onaylandı" },
+    { id: "demo-2", name: "Demo Misafir 02", phone: "+90 555 000 00 02", date: dateAfter(1), time: "19:00", guests: 4, notes: "DEMO · Aile yemeği", createdAt, status: "Bekliyor" },
+    { id: "demo-3", name: "Demo Misafir 03", phone: "+90 555 000 00 03", date: dateAfter(2), time: "20:00", guests: 3, notes: "DEMO · Kutlama", createdAt, status: "Onaylandı" },
+    { id: "demo-4", name: "Demo Misafir 04", phone: "+90 555 000 00 04", date: dateAfter(3), time: "13:00", guests: 6, notes: "DEMO · Teras masası tercihi", createdAt, status: "Bekliyor" },
   ];
 };
 export const getReservations = () => {
@@ -58,7 +58,8 @@ export const addReservation = (r: Omit<Reservation, "id" | "createdAt" | "status
   saveReservations(all);
 };
 
-export const PHONE = "+90 500 000 00 00";
-export const WHATSAPP = "https://wa.me/905000000000";
-export const ADDRESS = "Cumhuriyet Mah., Şanlıurfa";
-export const MAPS = "https://www.google.com/maps/search/?api=1&query=Astarte+Restaurant+Şanlıurfa";
+export const PHONE = "+90 555 000 00 00";
+export const EMAIL = "rezervasyon@asternrestoran.example";
+export const WHATSAPP = "https://wa.me/905550000000";
+export const ADDRESS = "Tarihi Yarımada, İstanbul (genel demo konumu)";
+export const MAPS = "https://www.google.com/maps/search/?api=1&query=Tarihi+Yarimada+Istanbul";

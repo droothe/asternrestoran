@@ -1,24 +1,14 @@
-# astarterestoran
+# Astern Restoran
 
-astarterestoran diye koy başlığı da repo adını da
+Astern, Anadolu mutfağından ilham alan kurgusal bir fine-dining demo markasıdır.
 
-This project was built with [Lovable](https://lovable.dev).
+## Geliştirme
 
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/65c00afd-ecbe-46b4-a9b1-dcc0e34b6cf9).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Node.js ve npm ile bağımlılıkları yükleyip geliştirme sunucusunu başlatın:
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+npm install
 npm run dev
 ```
+
+Üretim derlemesi için `npm run build`, testler için `npm test` komutlarını kullanın.
